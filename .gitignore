@@ -1,0 +1,16 @@
+dist
+node_modules
+.history
+yarn-error.log
+.env.*
+.DS_Store
+.vscode
+# Logs
+/logs
+*.log
+
+# Coverage directory used by tools like istanbul
+/coverage
+
+# Compiled sanity studio
+/dist
