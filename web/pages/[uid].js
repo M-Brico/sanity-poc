@@ -108,7 +108,7 @@ export default function Page({data, preview}) {
     <div style={{maxWidth: `20rem`, padding: `1rem`}}>
       {preview && <Link href="/api/exit-preview">Preview Mode Activated!</Link>}
       {page?.title && <h1>{page.title}</h1>}
-      <BlockContent blocks={page.body} />
+      <BlockContent blocks={page?.body} />
     </div>
   )
 }
