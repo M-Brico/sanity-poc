@@ -32,27 +32,27 @@ function filterDataToSingleItem(data, preview) {
 }
 
 /**
- * Makes Next.js aware of all the slugs it can expect at this route
+ * Makes Next.js aware of all the uids it can expect at this route
  *
- * See how we've mapped over our found slugs to add a `/` character?
+ * See how we've mapped over our found uids to add a `/` character?
  * Idea: Add these in Sanity and enforce them with validation rules :)
- * https://www.simeongriggs.dev/nextjs-sanity-slug-patterns
+ * https://www.simeongriggs.dev/nextjs-sanity-uid-patterns
  */
 export async function getStaticPaths() {
-  const allSlugsQuery = groq`*[defined(slug.current)][].slug.current`
+  const allSlugsQuery = groq`*[defined(uid.current)][].uid.current`
   const pages = await getClient().fetch(allSlugsQuery)
 
   return {
-    paths: pages.map((slug) => `/${slug}`),
+    paths: pages.map((uid) => `/${uid}`),
     fallback: true,
   }
 }
 
 /**
- * Fetch the data from Sanity based on the current slug
+ * Fetch the data from Sanity based on the current uid
  *
  * Important: You _could_ query for just one document, like this:
- * *[slug.current == $slug][0]
+ * *[uid.current == $uid][0]
  * But that won't return a draft document!
  * And you get a better editing experience
  * fetching draft/preview content server-side
@@ -63,8 +63,8 @@ export async function getStaticPaths() {
  */
 export async function getStaticProps({params, preview = false}) {
   console.log(params)
-  const query = groq`*[_type == "page" && slug.current == $slug]`
-  const queryParams = {slug: params.slug}
+  const query = groq`*[_type == "page" && uid.current == $uid]`
+  const queryParams = {uid: params.uid}
   const data = await getClient(preview).fetch(query, queryParams)
 
   // Escape hatch, if our query failed to return data
