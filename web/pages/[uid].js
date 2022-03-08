@@ -80,9 +80,9 @@ export async function getStaticProps({params, preview = false}) {
       // Pass down the "preview mode" boolean to the client-side
       preview,
       // Pass down the initial content, and our query
-      data: {page, query, queryParams},
-      revalidate: 1,
-    }
+      data: {page, query, queryParams}
+    },
+    revalidate: 1
   }
 }
 
