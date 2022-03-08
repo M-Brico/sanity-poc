@@ -63,7 +63,9 @@ export async function getStaticPaths() {
  */
 export async function getStaticProps({params, preview = false}) {
   console.log(params)
-  const query = groq`*[_type == "page" && uid.current == $uid]`
+  const query = groq`*[_type == "page" && uid.current == $uid]{
+  _id, title, body
+  }`
   const queryParams = {uid: params.uid}
   const data = await getClient(preview).fetch(query, queryParams)
 
