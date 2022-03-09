@@ -1,16 +1,17 @@
-const remoteUrl = `https://about-cancer-poc.sanity.studio`
-const localUrl = `http://localhost:3000`
+const remoteUrl = `https://feature-aws-amplify.dqmw01ax6yyuw.amplifyapp.com/`;
+const localUrl = `http://localhost:3000`;
 
-const previewSecret = process.env.SANITY_PREVIEW_SECRET
+const previewSecret = process.env.SANITY_PREVIEW_SECRET;
 
 export default function resolveProductionUrl(doc) {
-  const baseUrl = window.location.hostname === 'localhost' ? localUrl : remoteUrl
+  const baseUrl =
+    window.location.hostname === "localhost" ? localUrl : remoteUrl;
 
-  const previewUrl = new URL(baseUrl)
+  const previewUrl = new URL(baseUrl);
 
-  previewUrl.pathname = `/api/preview`
-  previewUrl.searchParams.append(`secret`, previewSecret)
-  previewUrl.searchParams.append(`slug`, doc?.uid?.current ?? `/`)
+  previewUrl.pathname = `/api/preview`;
+  previewUrl.searchParams.append(`secret`, previewSecret);
+  previewUrl.searchParams.append(`slug`, doc?.uid?.current ?? `/`);
 
-  return previewUrl.toString()
+  return previewUrl.toString();
 }
