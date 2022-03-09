@@ -4,9 +4,9 @@ const previewSecret='sk0XLbAz0MP6TVjACuu0HFOnNotHio0YFgVt1gq1jRCBfTRJji1bIBJ5j0o
 
 export default async function handler(req, res) {
   // Check for secret to confirm this is a valid request
-  // if (req.query.secret !== previewSecret) {
-  //   return res.status(401).json({ message: 'Invalid token' })
-  // }
+  if (req.query.secret !== previewSecret) {
+    return res.status(401).json({ message: 'Invalid token' })
+  }
 
   try {
     await res.unstable_revalidate('/our-research')
