@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/webhook": "^1.0.2",
     "next": "12.0.4",
     "next-sanity": "^0.4.0",
     "react": "17.0.2",
