@@ -81,8 +81,7 @@ export async function getStaticProps({params, preview = false}) {
       preview,
       // Pass down the initial content, and our query
       data: {page, query, queryParams}
-    },
-    revalidate: 1
+    }
   }
 }
 
