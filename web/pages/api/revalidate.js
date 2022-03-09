@@ -10,6 +10,7 @@ const revalidate = async (req, res) => {
 
   try {
     // Customise the pages you need to revalidate here.
+    // Keep the is simple for now
     await res.unstable_revalidate('/our-research')
 
     res.json({
